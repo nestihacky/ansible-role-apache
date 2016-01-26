@@ -1,0 +1,9 @@
+---
+
+- name: Remove welcome.conf
+  file: path=/etc/httpd/conf.d/welcome.conf state=absent
+
+- name: Enable apache
+  service: name={{ item }} enabled=yes state=started
+  with_items:
+  - httpd
