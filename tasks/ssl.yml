@@ -1,0 +1,5 @@
+- name: install ssl config
+  template:
+    src=ssl.conf.j2
+    dest="/etc/httpd/conf.d/ssl.conf"
+  notify: reload apache

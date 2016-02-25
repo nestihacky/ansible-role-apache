@@ -6,3 +6,4 @@ apache_vhost_dest: /etc/httpd/conf.d
 apache_pkgs:
   - httpd
   - mod_wsgi
+  - mod_ssl

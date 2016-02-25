@@ -5,5 +5,13 @@
 
 - include: install.yml
 - include: conf.yml
-- include: static.yml
-  when: apache_static_dirs
+
+- name: include ssl config
+  include: ssl.yml
+  when: apache_ssl
+
+- name: include alias config
+  include: alias.yml
+  when: apache_aliases
+
+- include: service.yml

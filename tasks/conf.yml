@@ -2,8 +2,8 @@
 
 - name: Remove welcome.conf
   file: path=/etc/httpd/conf.d/welcome.conf state=absent
+  when: apache_no_welcome_conf
 
-- name: Enable apache
-  service: name={{ item }} enabled=yes state=started
-  with_items:
-  - httpd
+- name: Remove userdir.conf
+  file: path=/etc/httpd/conf.d/userdir.conf state=absent
+  when: apache_no_userdir_conf
