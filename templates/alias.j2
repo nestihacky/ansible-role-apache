@@ -1,3 +1,4 @@
+{% for item in apache_aliases %}
 Alias {{ item.alias }} {{ item.dir }}
 
 <Directory "{{ item.dir }}">
@@ -5,3 +6,5 @@ Alias {{ item.alias }} {{ item.dir }}
     AllowOverride None
     Require all granted
 </Directory>
+
+{% endfor %}

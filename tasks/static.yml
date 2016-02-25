@@ -1,9 +1,0 @@
-- name: install static httpd config
-  template:
-    src=httpd_static.j2
-    dest="/etc/httpd/conf.d/{{ item.alias }}_static.conf"
-  notify: Reload apache
-  with_items: "{{ apache_static_dirs }}"
-
-- file: path={{ item.dir }} owner=root group=root mode=755 state=directory
-  with_items: "{{ apache_static_dirs }}"
