@@ -57,6 +57,7 @@ SSLCryptoDevice builtin
 ##
 
 <VirtualHost _default_:{{ apache_ssl_listen }}>
+ServerName {{ apache_ssl_server_name }}
 
 # General setup for the virtual host, inherited from global configuration
 #DocumentRoot "/var/www/html"
