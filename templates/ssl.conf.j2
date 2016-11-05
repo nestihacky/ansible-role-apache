@@ -16,7 +16,11 @@ Listen {{ apache_ssl_listen }} https
 #   Configure the pass phrase gathering process.
 #   The filtering dialog program (`builtin' is a internal
 #   terminal dialog) has to provide the pass phrase on stdout.
+{% if ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 7 %}
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
+{% else %}
+SSLPassPhraseDialog builtin
+{% endif %}
 
 #   Inter-Process Session Cache:
 #   Configure the SSL Session Cache: First the mechanism
@@ -24,7 +28,9 @@ SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
 SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
 SSLSessionCacheTimeout  300
 
+{% if ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 7 %}
 SSLCompression          {{ apache_ssl_compression }}
+{% endif %}
 
 #   Pseudo Random Number Generator (PRNG):
 #   Configure one or more sources to seed the PRNG of the
