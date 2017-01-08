@@ -135,6 +135,9 @@ SSLCertificateChainFile {{ apache_ssl_chain }}
 SSLCACertificateFile {{ apache_ssl_cacert }}
 {% endif %}
 
+# Enable HSTS (2 years expiration)
+Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
+
 #   Client Authentication (Type):
 #   Client certificate verification type and depth.  Types are
 #   none, optional, require and optional_no_ca.  Depth is a
