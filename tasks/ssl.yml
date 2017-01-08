@@ -3,3 +3,10 @@
     src=ssl.conf.j2
     dest="/etc/httpd/conf.d/ssl.conf"
   notify: reload apache
+
+- seport:
+    ports: "{{ apache_ssl_listen }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when: common_selinux

@@ -32,3 +32,9 @@ apache_ssl_compression: 'off'
 # FIXME: not understood by httpd-2.4.6-40.el7.centos.x86_64
 # and mod_ssl-2.4.6-40.el7.centos.x86_64, openssl-1.0.1e-51.el7_2.2.x86_64
 #apache_ssl_session_tickets: 'off'
+
+# SELinux
+httpd_tmp_exec: False
+httpd_can_network_connect: False
+httpd_can_network_connect_db: False
+httpd_execmem: False
